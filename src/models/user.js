@@ -21,7 +21,7 @@ const UserModel =  {
 
         return new Promise((resolve, reject) => {
 
-            const query = `SELECT name, email FROM ${tableName} WHERE email='${user.email}' AND password='${user.password}'`;
+            const query = `SELECT id, name, email FROM ${tableName} WHERE email='${user.email}' AND password='${user.password}'`;
             console.log(query)
 
             mysql.search(query)
