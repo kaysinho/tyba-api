@@ -12,14 +12,14 @@ npm install
 ```
 
 ## Tener en cuenta
-Este proyecto lee y escribe en una base de datos de MariaDB. Hacer las instalaciones locales requeridas por ejemplo Xampp o la que usted guste. Luego debe crear la DB y tablas corriendo el script que se encuentra en la ruta:
+Este proyecto lee y escribe en una base de datos de MariaDB. Usted debe hacer las instalaciones necesarias por ejemplo Xampp o la que usted guste para poder trabajar con MySQL. Luego debe crear la DB y tablas corriendo el script que se encuentra en la ruta:
 
 ```bash
 ./src/data/script.sql
 
 ```
 
-Luego es necesario cambiar los datos de conexcion que se encuentran en el archivo src/mysql/mysql.js
+Tambien es necesario cambiar los datos de conexcion que se encuentran en el archivo src/mysql/mysql.js
 
 ```javascript
 const connection = mysql.createConnection({
