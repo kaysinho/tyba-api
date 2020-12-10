@@ -5,6 +5,9 @@ const userController = require('../controllers/user');
 const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator');
 var session = require('express-session')
+var getRestaurants = require('../controllers/restaurants');
+
+
 
 /** login */
 router.get('/login', [check('email').isEmail(), check('password').isLength({ min: 8 })], (req, res, next) => {
@@ -24,6 +27,8 @@ router.get('/login', [check('email').isEmail(), check('password').isLength({ min
       return next(createError(500, err))
     })
 });
+
+
 
 /** Sign In */
 router.post('/sign-in', [check('email').isEmail(), check('password').isLength({ min: 8 }),
@@ -52,7 +57,6 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/restaurants', [check('email').isEmail(), check('city').isLength({ min: 2 })], (req, res, next) => {
 
-
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
@@ -60,7 +64,11 @@ router.get('/restaurants', [check('email').isEmail(), check('city').isLength({ m
 
   sess = req.session;
   if (sess.email == req.body.email) {
-    res.json({ restaurats: [] });
+
+    getRestaurants(req.body.city)
+      .then((data) => {
+        res.json(data);
+      }, err => next(createError(400, err)))
   }
   else {
     return next(createError(401, "Debe iniciar sesión primero"))
