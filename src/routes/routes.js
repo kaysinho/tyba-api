@@ -41,11 +41,26 @@ check('name').isLength({ min: 3 })], (req, res, next) => {
   })
 });
 
+/** Sign In */
+router.post('/logout', (req, res, next) => {
+
+  req.session.destroy();
+  res.json({ message: 'Hasta luego ' });
+
+});
+
 
 router.get('/restaurants', [check('email').isEmail(), check('city').isLength({ min: 2 })], (req, res, next) => {
+
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
   sess = req.session;
-  if (sess.email==req.body.email) {
-    res.json({restaurats : []});
+  if (sess.email == req.body.email) {
+    res.json({ restaurats: [] });
   }
   else {
     return next(createError(401, "Debe iniciar sesión primero"))
