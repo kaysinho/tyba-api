@@ -16,15 +16,29 @@ connection.connect((err) => {
     console.log('Conexion exitosa a la base de datos!')
 });
 
-const Query =  async(query) => {
-    return new Promise((resolve, reject)=>{
+const MySQL = {
+    search : async (query) => {
+        return new Promise((resolve, reject) => {
 
-        connection.query(query, function (error, results, fields) {
-            if (error) reject(error);
-                
-            resolve(results);
-          });
-    })
+            connection.query(query, function (error, results, fields) {
+                if (error) reject(error);
+
+                resolve(results);
+            });
+        })
+    },
+    insert : async (query, object) => {
+        return new Promise((resolve, reject) => {
+
+            var myQuery = connection.query(query, object, function (error, results, fields) {
+                if (error) reject(error);
+
+                resolve(1);
+            });
+
+            console.log(myQuery.sql);
+        })
+    }
 }
 
-module.exports = Query;
+module.exports = MySQL;
