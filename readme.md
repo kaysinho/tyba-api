@@ -40,5 +40,6 @@ npm start
 ```
 
 Es necesario abrir la siguiente url [http://localhost:3000/](http://localhost:3000) en Postman o su explorador.
+En el proyecto hay una carpeta llamada 'examples postman' donde encontrará ejemplos de como consumir el API.
 ## Licencia 
 [MIT](https://choosealicense.com/licenses/mit/)
