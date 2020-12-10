@@ -11,17 +11,8 @@ Navegar hasta la carpeta donde se descargó este repositorio, y ejecutar el sigu
 npm install
 ```
 
-## Correr el proyecto
-
-Navegar hasta la carpeta donde se descargó este repositorio, y ejecutar el siguiente comando.
-
-```bash
-npm start
-
-```
-
 ## Tener en cuenta
-Este proyecto lee y escribe en una base de datos de MariaDB. Debe crear su DB y tablas corriendo el script que se encuentra en la ruta:
+Este proyecto lee y escribe en una base de datos de MariaDB. Hacer las instalaciones locales requeridas por ejemplo Xampp o la que usted guste. Luego debe crear la DB y tablas corriendo el script que se encuentra en la ruta:
 
 ```bash
 ./src/data/script.sql
@@ -39,6 +30,15 @@ const connection = mysql.createConnection({
     database: 'jplata'
 });
 ```
+## Correr el proyecto
 
+Navegar hasta la carpeta donde se descargó este repositorio, y ejecutar el siguiente comando.
+
+```bash
+npm start
+
+```
+
+Es necesario abrir la siguiente url [http://localhost:3000/](http://localhost:3000) en Postman o su explorador.
 ## Licencia 
 [MIT](https://choosealicense.com/licenses/mit/)
